@@ -1,0 +1,11 @@
+version: '2'
+services:
+  output:
+    build:
+      context: ./
+      dockerfile: build.dockerfile
+    volumes:
+      - ./:/book
+    command: /bin/bash -ci "cd /book && ./setup.sh && npm run pdf && ./grayscale.sh"
+    # output EPUB file
+    #command: /bin/bash -ci "cd /book && ./setup.sh && npm run epub"
